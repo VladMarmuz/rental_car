@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Car Rental</title>
+
+
+</head>
+<body>
+
+<div th:fragment="header">
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-3 justify-content-center mb-md-0">
+                    <li><a href="/home" class="nav-link px-4 text-white">Главная</a></li>
+                    <li><a href="/cars" class="nav-link px-4 text-white">Каталог автомобилей</a></li>
+                    <li><a href="#aboutUs" class="nav-link px-4 text-white">О нас </a></li>
+                    <li sec:authorize="isAuthenticated()">
+                        <a href="/myOrder" class="nav-link px-4 text-white">Мои заказы</a></li>
+                </ul>
+                <ul>
+                    <li class="btn btn-success" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                        <a href="/admin">для управления</a></li>
+                    <li class="btn btn-outline-warning" sec:authorize="isAuthenticated()">
+                        <form  method="POST" th:action="@{/logout}">
+                            <input  type="submit"  value="Выйти"/>
+                        </form>
+                    </li>
+                    <li class="btn btn-success" sec:authorize="!isAuthenticated()">
+                        <a class="text-end" th:href="@{/login}" th:text="Войти"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</div>
+<p></p>
+<p></p>
+<main>
+    <nav class="navbar-expand-sm text-center bg-warning">
+        <div class="container-fluid">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-dark">Прокат Автомобилей в Минске</h1>
+                    <p class="lead text-muted">Выбирая нас, Вы получаете качество и комфорт </p>
+                    <p>
+                        <a href="/cars" class="btn btn-success">Каталог автомобилей</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="py-5 text-center container">
+        <h2>Наши преимущества</h2>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+                            <h5>Свобода перемещения</h5>
+                            <p>Арендуя автомобиль без водителя, вы «не привязываетесь» к кому-либо,
+                                и можете распоряжаться своим временем так, как захотите.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5>Новые авто</h5>
+                            <p>Все автомобили нашего автопарка поддерживаются в хорошем техническом состоянии
+                                (преимущественно до 5 лет эксплуатации).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+                            <h5>Чистота </h5>
+                            <p>Все авто чистые и ухоженные, с отапливаемым салоном и комфортабельными условиями для
+                                пассажиров.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-d8b29d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="d8b29d0" data-element_type="section">
+        <a name="aboutUs"></a>
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-row">
+                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8080c62"
+                     data-id="8080c62" data-element_type="column">
+                    <div class="elementor-column-wrap elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-2b8469f elementor-widget elementor-widget-heading"
+                                 data-id="2b8469f" data-element_type="widget" data-widget_type="heading.default">
+                                <div class="elementor-widget-container">
+                                    <h2 class="elementor-heading-title elementor-size-default">Аренда автомобилей в
+                                        Минске – максимум комфорта, минимум хлопот.</h2></div>
+                            </div>
+                            <div class="elementor-element elementor-element-9e4564e elementor-widget elementor-widget-text-editor"
+                                 data-id="9e4564e" data-element_type="widget" data-widget_type="text-editor.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-text-editor elementor-clearfix">
+                                        <p>Услуга проката автомобилей когда-то казалась небывалой роскошью. Тема «Rent a
+                                            car» в учебнике английского имела фантастический оттенок в стране
+                                            победившего социализма, где автомобиль никогда не был привычным и
+                                            обыкновенным средством передвижения. Все изменилось с тех пор. Прокат авто
+                                            предлагают многие фирмы, и это уже не уникальный сервис для избранных, это
+                                            услуга, доступная каждому.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-d0ce8a6 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="d0ce8a6" data-element_type="section">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-row">
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-87f7c38"
+                     data-id="87f7c38" data-element_type="column">
+                    <div class="elementor-column-wrap elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-e3846ab elementor-widget elementor-widget-text-editor"
+                                 data-id="e3846ab" data-element_type="widget" data-widget_type="text-editor.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-text-editor elementor-clearfix">
+                                        <p><strong>Преимущества проката автомобиля очевидны:</strong></p>
+                                        <ul>
+                                            <li>Вам нужно встретить друзей в аэропорту, но 5 человек со всем багажом
+                                                никак поместятся в вашу машину. Зато в микроавтобусе все будут
+                                                чувствовать себя комфортно, и дорога от аэропорта не покажется
+                                                утомительно длинной.
+                                            </li>
+                                            <li>Как на зло, ваша машина стоит на ремонте, а отвезти тещу за город нужно
+                                                прямо сейчас. Приезжайте к нам (недалеко от метро Пушкинская), выбирайте
+                                                машину, проходите процедуру оформления (не более 15 минут при наличии
+                                                всех документов) – и вот вы уже готовы загрузить все сумки и баулы, а
+                                                теща всю дорогу гадает, когда вы успели купить новый автомобиль.
+                                            </li>
+                                            <li>Вас попросили сопровождать деловых партнеров фирмы в передвижениях по
+                                                городу. Возможно, ваша машина соответствует деловому стандарту и вместит
+                                                всех гостей фирмы. Если же нет, обращайтесь к нам. Мы осуществляем
+                                                прокат авто в Минске, как с водителем, так и без. Кортеж из пары машин
+                                                бизнес-класса произведет нужное впечатление и упростит экскурсии по
+                                                городу.
+                                            </li>
+                                            <li>Во многих житейских ситуациях аренда авто – это разумный и экономный
+                                                выход. Ухоженный автомобиль со страховкой выручает в непредвиденных
+                                                обстоятельствах, упрощает передвижение по городу, дает возможность
+                                                продемонстрировать более высокий статус. Что может быть эффектнее, чем
+                                                выезд на корпоративный пикник на шикарном BMW.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-61fdd6f"
+                     data-id="61fdd6f" data-element_type="column">
+                    <div class="elementor-column-wrap elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-aaaa083 elementor-widget elementor-widget-text-editor"
+                                 data-id="aaaa083" data-element_type="widget" data-widget_type="text-editor.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-text-editor elementor-clearfix">
+                                        <p><strong>Прокат автомобилей без водителя: просто, быстро, экономно.</strong>
+                                        </p>
+                                        <ul>
+                                            <li>«Пчёлка Майя» предлагает большой выбор автомобилей: эконом и средний
+                                                класс, бизнес-класс и внедорожники, в нашем автопарке содержатся
+                                                исключительно иномарки от мировых производителей: Audi, Toyota, Mazda,
+                                                Honda, Lexus, Fiat, Mercedes, Volkswagen, Peugeot, Citroen, Hyundai,
+                                                KIA, BMW. Все машины застрахованы и своевременно проходят
+                                                техобслуживание.
+                                            </li>
+                                            <li>При наличии паспорта, водительского удостоверения категории «В» и талона
+                                                к нему оформление аренды авто занимает не более 15 минут.
+                                            </li>
+                                            <li>Офис компании находится г. Минска, ул. Берута 3Б, офис 39Б (4-й этаж),
+                                                недалеко от ст. метро «Пушкинская», однако за дополнительную плату (от
+                                                20 руб.) автомобиль может быть доставлен в удобное для вас место,
+                                                например, в аэропорт или на вокзал к прибытию вашего рейса. Если вы
+                                                арендуете авто на длительное время, доставка будет осуществлена
+                                                бесплатно.
+                                            </li>
+                                            <li>Прокат автомобилей в Минске без водителя и прокат микроавтобуса без
+                                                водителя стоит в среднем от 30 руб.*, однако постоянные клиенты фирмы
+                                                могут рассчитывать на скидки (5-10% от стоимости).
+                                            </li>
+                                            <li>Вы можете арендовать и автомобиль с водителем, с почасовой оплатой.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section
+            class="elementor-section elementor-top-section elementor-element elementor-element-3520c74 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            data-id="3520c74" data-element_type="section">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-row">
+                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-074746e"
+                     data-id="074746e" data-element_type="column">
+                    <div class="elementor-column-wrap elementor-element-populated">
+                        <div class="elementor-widget-wrap">
+                            <div class="elementor-element elementor-element-aaf7fb3 elementor-widget elementor-widget-text-editor"
+                                 data-id="aaf7fb3" data-element_type="widget" data-widget_type="text-editor.default">
+                                <div class="elementor-widget-container">
+                                    <div class="elementor-text-editor elementor-clearfix">
+                                        <p><strong>Аренда автомобилей: куда позвонить?</strong></p>
+                                        <ul>
+                                            <li>Чтобы арендовать автомобиль в нашей компании, начните с простого:
+                                                выберите подходящую машину в нашем автопарке. Эконом или бизнес-класс, а
+                                                может быть, внедорожник? Выбор широк.
+                                            </li>
+                                            <li>Затем нужно позвонить по телефонам, указанным в шапке сайта, или
+                                                заполнить форму заказа. Наш менеджер ответит на все интересующие вас
+                                                вопросы и даст рекомендации по выбору авто.
+                                            </li>
+                                            <li>Возьмите с собой паспорт, водительское удостоверение категории «В» и
+                                                талон к нему. Приготовьте залог (от 100 до 600 руб. в зависимости от
+                                                автомобиля).
+                                            </li>
+                                            <li>Приезжайте за машиной или закажите его доставку. Если вы арендуете
+                                                машину надолго, автомобиль будет доставлен бесплатно. Как видите, аренда
+                                                авто в Минске – это не только просто, это удобно и экономно. Став нашим
+                                                постоянным клиентом,
+                                                вы получаете в свое распоряжение целый парк автомобилей на все случаи
+                                                жизни, без финансового бремени по покупке и уходу за ними. Мы ухаживаем
+                                                за автомобилями, вы – ездите на них. *цены указаны в долларах США для
+                                                удобства иностранных граждан, расчёт осуществляется в белорусских
+                                                рублях.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div th:fragment="footer">
+    <footer class="pt-3 my-md-5 pt-md-5 border-top  ">
+        <div class="row">
+
+            <div class="col-6 col-md card text-bg-primary mb-3 ">
+                <ul class="list-unstyled text-small">
+                    <div class="col-12 col-md">
+                        <div id="sow-editor-3" class="widget widget_sow-editor">
+                            <div class="so-widget-sow-editor so-widget-sow-editor-base">
+                                <div class="siteorigin-widget-tinymce textwidget">
+                                    <p><span class="list-unstyled text-small"><strong>Адрес:</strong> г.Минск</span></p>
+                                    <p><span class="list-unstyled text-small"><strong>Телефоны:</strong></span><br>
+                                        <span class="list-unstyled text-small"><a class="list-unstyled text-small"
+                                                                                  href="tel:+375 (29) 327-16-16">+375 (29) 236-43-16</a></span>
+                                        <span class="list-unstyled text-small"><a class="list-unstyled text-small"
+                                                                                  href="tel:+375 (33) 327-16-16">+375 (33) 984-16-87</a></span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="col-6 col-md card text-bg-primary mb-3">
+                <div class="elementor-widget-wrap">
+                    <div class="elementor-element elementor-element-710d4665 elementor-widget elementor-widget-heading"
+                         data-id="710d4665" data-element_type="widget" data-widget_type="heading.default">
+                        <div class="elementor-widget-container">
+                            <h4 class="elementor-heading-title elementor-size-default">Классы авто</h4></div>
+                    </div>
+                    <div class="elementor-element elementor-element-4ca80ea9 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
+                         data-id="4ca80ea9" data-element_type="widget" data-widget_type="icon-list.default">
+                        <div class="elementor-widget-container">
+                            <ul class="elementor-icon-list-items">
+                                <li class="elementor-icon-list-item">
+                                    <span class="elementor-icon-list-text">Эконом</span>
+                                </li>
+                                <li class="elementor-icon-list-item">
+                                    <span class="elementor-icon-list-text">Средний</span>
+                                </li>
+                                <li class="elementor-icon-list-item">
+                                    <span class="elementor-icon-list-text">Бизнес</span>
+
+                                </li>
+                                <li class="elementor-icon-list-item">
+
+                                    <span class="elementor-icon-list-text">Универсалы</span>
+                                </li>
+                                <li class="elementor-icon-list-item">
+                                    <span class="elementor-icon-list-text">Внедорожники</span>
+                                    </a>
+                                </li>
+                                <li class="elementor-icon-list-item">
+                                    <span class="elementor-icon-list-text">Кабриолеты и купе</span>
+                                </li>
+                                <li class="elementor-icon-list-item">
+                                    <span class="elementor-icon-list-text">Микроавтобусы и минивэны</span>
+                                </li>
+                                <li class="elementor-icon-list-item">
+                                    <span class="elementor-icon-list-text">Грузовые микроавтобусы</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                a{ color : black;
+                text-decoration:none;
+
+            </style>
+            <div class="elementor-widget-wrap">
+                <div class="elementor-element elementor-element-4a9c020c elementor-widget elementor-widget-heading"
+                     data-id="4a9c020c" data-element_type="widget" data-widget_type="heading.default">
+                    <div class="elementor-widget-container">
+                        <p class="elementor-heading-title elementor-size-default">Цены на аренду автомобилей указаны
+                            ориентировочно и носят ознакомительно-информационный характер и не являются публичной
+                            офертой.</p></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
