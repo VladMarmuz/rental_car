@@ -10,4 +10,5 @@ import java.util.List;
 public interface ClientRepository extends CrudRepository<Client,Integer> {
     Client findClientByUsername(String userName);// найти человека по username
     List<Client> findAll();
+    void deleteById(Integer id);
 }

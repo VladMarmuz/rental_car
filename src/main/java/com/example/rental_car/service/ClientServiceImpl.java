@@ -45,6 +45,16 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    public void deleteById(Integer id) {
+        clientRepository.deleteById(id);
+    }
+
+    @Override
+    public Client findClientById(Integer id) {
+        return clientRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {//спринг использует этот метод для поиска человека
         //в БД и в дальнейшем авторизует его , если найден
         final Client user = findClientByUsername(userName);

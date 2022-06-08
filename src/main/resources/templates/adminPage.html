@@ -44,7 +44,10 @@
                 <td th:text="${client.drivingExperience}"></td>
                 <td th:text="${client.role}"></td>
                 <td th:text="${client.username}"></td>
-                <td><a th:href="@{client/{id}(id=${client.id})}">изменить</a></td>
+                <td><a th:href="@{clientEdit/{id}(id=${client.id})}">изменить</a></td>
+                <td><a th:href="@{clientDelete/{id}(id=${client.id})}">удалить</a></td>
+
+
             </tr>
         </div>
         </tbody>

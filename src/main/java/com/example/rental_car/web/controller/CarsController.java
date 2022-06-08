@@ -38,7 +38,7 @@ public class CarsController {
         if(errors.hasErrors())
             return "addCar";
         carService.save(car);
-        return "car";
+        return "redirect:/cars";
 
     }
 }
