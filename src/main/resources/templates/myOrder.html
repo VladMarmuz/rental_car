@@ -22,6 +22,7 @@
             <th>Статус заявки</th>
             <th>ID авто</th>
             <th>ID заказчика</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
                 <td th:text="${order.requestState}"></td>
                 <td th:text="${order.idCar}"></td>
                 <td th:text="${order.idClient}"></td>
+                <td><a th:href="@{orderDelete/{id}(id=${order.id})}">отменить заказ</a></td>
             </tr>
         </div>
         </tbody>

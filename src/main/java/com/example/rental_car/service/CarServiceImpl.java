@@ -27,4 +27,9 @@ public class CarServiceImpl implements CarService {
         carRepository.save(car);
 
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        carRepository.deleteById(id);
+    }
 }

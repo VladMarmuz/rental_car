@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -40,5 +41,11 @@ public class CarsController {
         carService.save(car);
         return "redirect:/cars";
 
+    }
+
+    @GetMapping("/carDelete/{id}")
+    public String deleteCar(@PathVariable("id") Integer id){
+        carService.deleteById(id);
+        return "redirect:/cars";
     }
 }

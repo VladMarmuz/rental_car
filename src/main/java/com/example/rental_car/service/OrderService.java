@@ -8,5 +8,5 @@ import java.util.List;
 public interface OrderService {
     void save(OrderDto order);
     List<Order> findAllOrder();
-
+    void deleteById(Integer id);
 }

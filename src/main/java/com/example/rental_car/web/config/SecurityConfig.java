@@ -29,8 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //и пишем какие страницы могут видеть только авторизованные пользователи
         // порядок ниже записанной логики важен
         http.authorizeRequests()
-                .antMatchers("/cars").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")//данная страница
-                .antMatchers("/adminPage").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/cars","/myOrder","/order").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")//данная страница
+                .antMatchers("/admin","/clientEdit","/addCar").hasAuthority("ROLE_ADMIN")
                 .and()// иначе
                 .formLogin()//перенаправляем на страницу логин
                 .and()

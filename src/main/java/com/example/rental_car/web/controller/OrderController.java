@@ -53,4 +53,10 @@ public class OrderController {
         return "myOrder";
 
     }
+
+    @GetMapping("/orderDelete/{id}")
+    public String deleteOrder(@PathVariable("id") Integer id){
+        orderService.deleteById(id);
+        return "redirect:/myOrder";
+    }
 }
