@@ -1,24 +1,29 @@
 package com.example.rental_car.web.controller;
 
 import com.example.rental_car.dao.models.Client;
+import com.example.rental_car.dao.models.Order;
+import com.example.rental_car.dao.models.dto.OrderDto;
+import com.example.rental_car.dao.repository.CarRepository;
+import com.example.rental_car.service.CarService;
 import com.example.rental_car.service.ClientService;
+import com.example.rental_car.service.Order1Service;
 import com.example.rental_car.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AdminController {
 
     private final ClientService clientService;
     private final OrderService orderService;
+    private final Order1Service order1Service;
 
-    public AdminController(ClientService clientService, OrderService orderService) {
+    public AdminController(ClientService clientService, OrderService orderService, Order1Service order1Service) {
         this.clientService = clientService;
         this.orderService = orderService;
+        this.order1Service = order1Service;
+
     }
 
     @GetMapping("/admin")
@@ -46,4 +51,24 @@ public class AdminController {
         clientService.deleteById(id);
         return "redirect:/admin";
     }
+
+    @GetMapping("/orderEdit/{id}")
+    public String editOrder(@PathVariable("id") Integer id,Model model){
+        Order order= orderService.findOrderById(id);
+        model.addAttribute("order",order);
+        return "orderEdit";
+    }
+
+    @PostMapping("/orderEdit")
+    public String updateOrder(Order order){
+        order1Service.save(order);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/admin/orderDelete/{id}")
+    public String deleteOrder(@PathVariable("id") Integer id){
+        orderService.deleteById(id);
+        return "redirect:/admin";
+    }
+
 }

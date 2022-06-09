@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
         order.setIdClient(client);
         order.setDateOfIssue(orderDto.getDateOfIssue());
         order.setReturnDate(orderDto.getReturnDate());
-        order.setRequestState ("в обработке");
+        order.setRequestState("в обработке");
         orderRepository.save(order);
 
     }
@@ -47,6 +47,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteById(Integer id) {
         orderRepository.deleteById(id);
+    }
+
+    @Override
+    public Order findOrderById(Integer id) {
+        return orderRepository.findById(id).orElse(null);
     }
 
 }

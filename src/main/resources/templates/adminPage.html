@@ -79,6 +79,9 @@
                 <td th:text="${order.requestState}"></td>
                 <td th:text="${order.idCar}"></td>
                 <td th:text="${order.idClient}"></td>
+                <td><a th:href="@{orderEdit/{id}(id=${order.id})}">изменить</a></td>
+                <td><a th:href="@{admin/orderDelete/{id}(id=${order.id})}">удалить</a></td>
+
             </tr>
         </div>
         </tbody>

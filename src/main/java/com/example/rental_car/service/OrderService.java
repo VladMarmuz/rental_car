@@ -1,5 +1,6 @@
 package com.example.rental_car.service;
 
+import com.example.rental_car.dao.models.Client;
 import com.example.rental_car.dao.models.Order;
 import com.example.rental_car.dao.models.dto.OrderDto;
 
@@ -9,4 +10,5 @@ public interface OrderService {
     void save(OrderDto order);
     List<Order> findAllOrder();
     void deleteById(Integer id);
+    Order findOrderById(Integer id);
 }

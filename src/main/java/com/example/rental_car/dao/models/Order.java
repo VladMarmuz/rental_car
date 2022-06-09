@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "`order`")
-public class Order extends BaseEntity {
+public class Order<RequestState> extends BaseEntity {
 
     @Column(name = "date_of_issue")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -27,7 +27,8 @@ public class Order extends BaseEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate returnDate;
 
-    @Column(name = "request_state", length = 45)
+
+    @Column(name= "request_state")
     private String requestState;
 
     @ManyToOne
