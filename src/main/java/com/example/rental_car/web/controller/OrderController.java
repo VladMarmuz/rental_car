@@ -17,9 +17,8 @@ import java.util.stream.Collectors;
 
 @Controller
 public class OrderController {
-    private OrderService orderService;
-
-    private ClientService clientService;
+    private final OrderService orderService;
+    private final ClientService clientService;
 
     public OrderController(OrderService orderService, ClientService clientService) {
         this.orderService = orderService;
@@ -46,7 +45,7 @@ public class OrderController {
         Role role = clientByUsername.getRole();
         if (role == Role.ROLE_ADMIN) {
             myOrders = orderService.findAllOrder();
-        } else if (role == Role.ROLE_USER) {
+        } else if (role==Role.ROLE_USER) {
             myOrders = orderService.findAllOrder().stream().filter(order -> order.getIdClient().getId()==clientByUsername.getId()).collect(Collectors.toList());
         }
         model.addAttribute("orders", myOrders);

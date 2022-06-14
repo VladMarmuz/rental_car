@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -35,6 +36,11 @@ public class Car extends BaseEntity {
 
     @OneToMany(mappedBy = "idCar")
     private List<Order> ordersCars;// create зависимость (Один ко многим к таблице "заказ")//это в car
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,
+    mappedBy = "car")
+    private List<Image> images = new ArrayList<>();
+
 
     @Override
     public String toString() {

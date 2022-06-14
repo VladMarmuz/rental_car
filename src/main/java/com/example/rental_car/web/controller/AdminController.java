@@ -1,5 +1,6 @@
 package com.example.rental_car.web.controller;
 
+import com.example.rental_car.dao.models.Car;
 import com.example.rental_car.dao.models.Client;
 import com.example.rental_car.dao.models.Order;
 import com.example.rental_car.dao.models.dto.OrderDto;
@@ -53,8 +54,14 @@ public class AdminController {
     }
 
     @GetMapping("/orderEdit/{id}")
-    public String editOrder(@PathVariable("id") Integer id,Model model){
+    public String editOrder(/*@PathVariable("idCar") Car car,
+                            @PathVariable("idClient") Client client,*/
+                            @PathVariable("id") Integer id, Model model){
         Order order= orderService.findOrderById(id);
+        /*order.setIdCar(car);
+        order.setIdClient(client);
+        model.addAttribute("car",car);
+        model.addAttribute("client",client);*/
         model.addAttribute("order",order);
         return "orderEdit";
     }

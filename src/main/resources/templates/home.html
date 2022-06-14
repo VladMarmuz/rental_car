@@ -12,31 +12,57 @@
 
     <title>Car Rental</title>
 
+    <style>
+  body {
+  background: url(https://images.wallpaperscraft.ru/image/single/bmw_f30_335i_tuning_stance_94852_1920x1080.jpg);
+  background-size: auto;
+   }
+   .overlay {
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    padding: 1rem; /* Поля вокруг текста */
+    border-radius: 5px; /* Радиус скругления */
+   }
+
+    </style>
+<style>
+    #block1{
+    backround-color: black;
+    opacity: 0.7; // прозрачность
+}
+</style>
+    <style>
+    #block2{
+    backround-color: black;
+    opacity: 0.9; // прозрачность
+}
+</style>
+
 
 </head>
 <body>
 
 <div th:fragment="header">
-    <header class="p-3 bg-dark text-white">
+    <header class="p-3 bg-dark text-white" id="block1">
+
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-3 justify-content-center mb-md-0">
-                    <li><a href="/home" class="nav-link px-4 text-white">Главная</a></li>
-                    <li><a href="/cars" class="nav-link px-4 text-white">Каталог автомобилей</a></li>
-                    <li><a href="#aboutUs" class="nav-link px-4 text-white">О нас </a></li>
+                    <li><a href="/home" class="nav-link px-4 text-white"><h5>Главная</h5></a></li>
+                    <li><a href="/cars" class="nav-link px-4 text-white"><h5>Каталог автомобилей</h5></a></li>
+                    <li><a href="#aboutUs" class="nav-link px-4 text-white"><h5>О нас </h5></a></li>
                     <li sec:authorize="isAuthenticated()">
-                        <a href="/myOrder" class="nav-link px-4 text-white">Мои заказы</a></li>
+                        <a href="/myOrder" class="nav-link px-4 text-white"><h5>Мои заказы</h5></a></li>
                 </ul>
                 <ul>
                     <li class="btn btn-success" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                         <a href="/admin">для управления</a></li>
-                    <li class="btn btn-outline-warning" sec:authorize="isAuthenticated()">
-                        <form  method="POST" th:action="@{/logout}">
-                            <input  type="submit"  value="Выйти"/>
-                        </form>
+
+                    <form sec:authorize="isAuthenticated()" method="POST" th:action="@{/logout}">
+                        <input class="btn btn-outline-warning" type="submit" value="Выйти"/>
+                    </form>
                     </li>
                     <li class="btn btn-success" sec:authorize="!isAuthenticated()">
-                        <a class="text-end" th:href="@{/login}" th:text="Войти"></a>
+                        <a class="text-end " th:href="@{/login}" th:text="Войти"></a>
                     </li>
                 </ul>
             </div>
@@ -46,12 +72,12 @@
 <p></p>
 <p></p>
 <main>
-    <nav class="navbar-expand-sm text-center bg-warning">
+    <nav class="navbar-expand-sm text-center">
         <div class="container-fluid">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-dark">Прокат Автомобилей в Минске</h1>
-                    <p class="lead text-muted">Выбирая нас, Вы получаете качество и комфорт </p>
+                    <h5 class="fw-dark">Выбирая нас, Вы получаете качество и комфорт </h5>
                     <p>
                         <a href="/cars" class="btn btn-success">Каталог автомобилей</a>
                     </p>
@@ -61,48 +87,46 @@
     </nav>
     <div class="py-5 text-center container">
         <h2>Наши преимущества</h2>
-    </div>
+        <div class="album py-5 ">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col">
+                        <div class="card shadow-sm">
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5>Свобода перемещения</h5>
+                                <p>Арендуя автомобиль без водителя, вы «не привязываетесь» к кому-либо,
+                                    и можете распоряжаться своим временем так, как захотите.</p>
 
-                        <div class="card-body">
-                            <h5>Свобода перемещения</h5>
-                            <p>Арендуя автомобиль без водителя, вы «не привязываетесь» к кому-либо,
-                                и можете распоряжаться своим временем так, как захотите.</p>
-
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5>Новые авто</h5>
-                            <p>Все автомобили нашего автопарка поддерживаются в хорошем техническом состоянии
-                                (преимущественно до 5 лет эксплуатации).</p>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5>Новые авто</h5>
+                                <p>Все автомобили нашего автопарка поддерживаются в хорошем техническом состоянии
+                                    (преимущественно до 5 лет эксплуатации).</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
+                    <div class="col">
+                        <div class="card shadow-sm">
 
-                        <div class="card-body">
-                            <h5>Чистота </h5>
-                            <p>Все авто чистые и ухоженные, с отапливаемым салоном и комфортабельными условиями для
-                                пассажиров.</p>
+                            <div class="card-body">
+                                <h5>Чистота </h5>
+                                <p>Все авто чистые и ухоженные, с отапливаемым салоном и комфортабельными условиями для
+                                    пассажиров.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
-    <section
-            class="elementor-section elementor-top-section elementor-element elementor-element-d8b29d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+    <section align="justify"
+            class="elementor-section elementor-top-section elementor-element elementor-element-d8b29d0 elementor-section-boxed elementor-section-height-default elementor-section-height-default overlay"
             data-id="d8b29d0" data-element_type="section">
         <a name="aboutUs"></a>
         <div class="elementor-container elementor-column-gap-default">
@@ -114,7 +138,7 @@
                             <div class="elementor-element elementor-element-2b8469f elementor-widget elementor-widget-heading"
                                  data-id="2b8469f" data-element_type="widget" data-widget_type="heading.default">
                                 <div class="elementor-widget-container">
-                                    <h2 class="elementor-heading-title elementor-size-default">Аренда автомобилей в
+                                    <h2 style="font-size:2vw;" class="elementor-heading-title elementor-size-default">Аренда автомобилей в
                                         Минске – максимум комфорта, минимум хлопот.</h2></div>
                             </div>
                             <div class="elementor-element elementor-element-9e4564e elementor-widget elementor-widget-text-editor"
@@ -136,7 +160,7 @@
         </div>
     </section>
     <section
-            class="elementor-section elementor-top-section elementor-element elementor-element-d0ce8a6 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            class="elementor-section elementor-top-section elementor-element elementor-element-d0ce8a6 elementor-section-boxed elementor-section-height-default elementor-section-height-default overlay"
             data-id="d0ce8a6" data-element_type="section">
         <div class="elementor-container elementor-column-gap-default">
             <div class="elementor-row">
@@ -181,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-61fdd6f"
+                <div class="elementor-column elementor-col-50 elementor-top-column overlayelementor-element elementor-element-61fdd6f"
                      data-id="61fdd6f" data-element_type="column">
                     <div class="elementor-column-wrap elementor-element-populated">
                         <div class="elementor-widget-wrap">
@@ -192,13 +216,6 @@
                                         <p><strong>Прокат автомобилей без водителя: просто, быстро, экономно.</strong>
                                         </p>
                                         <ul>
-                                            <li>«Пчёлка Майя» предлагает большой выбор автомобилей: эконом и средний
-                                                класс, бизнес-класс и внедорожники, в нашем автопарке содержатся
-                                                исключительно иномарки от мировых производителей: Audi, Toyota, Mazda,
-                                                Honda, Lexus, Fiat, Mercedes, Volkswagen, Peugeot, Citroen, Hyundai,
-                                                KIA, BMW. Все машины застрахованы и своевременно проходят
-                                                техобслуживание.
-                                            </li>
                                             <li>При наличии паспорта, водительского удостоверения категории «В» и талона
                                                 к нему оформление аренды авто занимает не более 15 минут.
                                             </li>
@@ -225,7 +242,7 @@
         </div>
     </section>
     <section
-            class="elementor-section elementor-top-section elementor-element elementor-element-3520c74 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+            class="overlay elementor-section elementor-top-section elementor-element elementor-element-3520c74 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
             data-id="3520c74" data-element_type="section">
         <div class="elementor-container elementor-column-gap-default">
             <div class="elementor-row">
@@ -273,8 +290,8 @@
     </section>
 </main>
 
-<div th:fragment="footer">
-    <footer class="pt-3 my-md-5 pt-md-5 border-top  ">
+<div th:fragment="footer" id="block2">
+    <footer class="pt-3 my-md-5 pt-md-5  ">
         <div class="row">
 
             <div class="col-6 col-md card text-bg-primary mb-3 ">
@@ -344,16 +361,8 @@
                 a{ color : black;
                 text-decoration:none;
 
+
             </style>
-            <div class="elementor-widget-wrap">
-                <div class="elementor-element elementor-element-4a9c020c elementor-widget elementor-widget-heading"
-                     data-id="4a9c020c" data-element_type="widget" data-widget_type="heading.default">
-                    <div class="elementor-widget-container">
-                        <p class="elementor-heading-title elementor-size-default">Цены на аренду автомобилей указаны
-                            ориентировочно и носят ознакомительно-информационный характер и не являются публичной
-                            офертой.</p></div>
-                </div>
-            </div>
         </div>
     </footer>
 </div>

@@ -9,6 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <title>Регистрация</title>
+    <style>
+  body {
+  background: url(https://images.wallpaperscraft.ru/image/single/bmw_f30_335i_tuning_stance_94852_1920x1080.jpg);
+  background-size: auto;
+   }
+    </style>
 </head>
 <body>
 <form th:action="@{/userRegister}" method="post" th:object="${client}">
@@ -91,7 +97,7 @@
         <div class="ml-5 form-group row">
             <label class="col-sm-4 col-form-label" for="drivingExperience">Водительский стаж</label>
             <div class="col-sm-5">
-                <input required type="text" class="form-control" th:field="*{drivingExperience}" id="drivingExperience" placeholder=" укажите колличество лет" >
+                <input required type="number" min="2" class="form-control" th:field="*{drivingExperience}" id="drivingExperience" placeholder="Водительский стаж должене быть более 2-х лет" >
                 <div class="error">
                     <p th:each="err : ${#fields.errors('drivingExperience')}" class="alert-danger" th:text="#{${err}}"></p>
                 </div>

@@ -9,7 +9,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class CarsController {
     }
 
     @PostMapping("/addCar")
-    public String addNewCar(@Valid Car car, Errors errors) {
+    public String addNewCar(@Valid Car car,Errors errors){
         if(errors.hasErrors())
             return "addCar";
         carService.save(car);
