@@ -63,7 +63,7 @@
 
                     <a class="btn btn-primary" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"  th:href="@{carDelete/{id}(id=${car.id})}">удалить авто из автопарка</a>
 
-                    <a class="btn btn-success" th:href="@{order/{id}(id=${car.id})}">Заказать</a>
+                    <a class="btn btn-success" sec:authorize="hasAnyAuthority('ROLE_USER')" th:href="@{order/{id}(id=${car.id})}">Заказать</a>
                 </div>
             </div>
         </div>

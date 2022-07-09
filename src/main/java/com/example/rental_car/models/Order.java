@@ -1,4 +1,4 @@
-package com.example.rental_car.dao.models;
+package com.example.rental_car.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,9 +7,8 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor

@@ -1,7 +1,7 @@
 package com.example.rental_car.web.controller;
 
 
-import com.example.rental_car.dao.models.Car;
+import com.example.rental_car.models.Car;
 import com.example.rental_car.service.CarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

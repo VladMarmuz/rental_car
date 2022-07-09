@@ -55,10 +55,14 @@
 
     <div class="ml-5 form-group row">
       <label class="col-sm-4 col-form-label" for="requestState" >Изменить cтатус заявки (1-В обработке, 2-Вам отказано, 3-Заказ одобрен с Вами свяжутся!)</label>
-      <div class="col-sm-5">
-        <input required type="text" class="form-control" th:field="*{requestState}" id="requestState" placeholder="">
-      </div>
+      <select required type="text" name="requestState" class="form-control" th:field="*{requestState}" id="requestState">
+        <option value="В обработке">В обработке</option>
+        <option value="Вам отказано">Вам отказано</option>
+        <option value="Заказ одобрен, с Вами свяжутся">Заказ одобрен, с Вами свяжутся</option>
+      </select>
     </div>
+
+
 
     <div class="form-group">
       <div class="col-sm-10" style="width: 100%;">
@@ -66,6 +70,7 @@
         <input readonly type="date" class="form-control search-query" th:field="*{returnDate}" name="returnDate" id="returnDate" placeholder="дата возврата авто"><br>
       </div>
     </div>
+
 
 
     <div class="form-group mt-2 text-center">

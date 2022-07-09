@@ -1,8 +1,8 @@
 package com.example.rental_car.service;
 
-import com.example.rental_car.dao.models.Client;
-import com.example.rental_car.dao.models.Role;
-import com.example.rental_car.dao.repository.ClientRepository;
+import com.example.rental_car.models.Client;
+import com.example.rental_car.models.Role;
+import com.example.rental_car.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

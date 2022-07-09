@@ -48,9 +48,12 @@
             </div>
         </div>
         <div class="ml-5 form-group row">
-            <label class="col-sm-4 col-form-label" for="role" >Изменить роль пользователя (ROLE_USER or ROLE_ADMIN)</label>
+            <label class="col-sm-4 col-form-label" for="role" >Изменить роль пользователя</label>
             <div class="col-sm-5">
-                <input required type="text" class="form-control" th:field="*{role}" id="role" placeholder="">
+                <select required type="text" name="role" class="form-control" th:field="*{role}" id="role">
+                    <option value="ROLE_ADMIN">Админ</option>
+                    <option value="ROLE_USER">Пользователь</option>
+                </select>
             </div>
         </div>
 
@@ -58,7 +61,7 @@
         <div class="ml-5 form-group row">
             <label class="col-sm-4 col-form-label" for="username">Имя пользователя</label>
             <div class="col-sm-5">
-                <input required type="text" class="form-control" th:field="*{username}" id="username" placeholder="пример: ivanovIvan">
+                <input readonly type="text" class="form-control" th:field="*{username}" id="username" placeholder="пример: ivanovIvan">
                 <div class="error">
                     <p th:each="err : ${#fields.errors('username')}" class="alert-danger" th:text="#{${err}}"></p>
                 </div>

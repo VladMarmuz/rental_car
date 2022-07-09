@@ -1,4 +1,4 @@
-package com.example.rental_car.dao.models;
+package com.example.rental_car.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +19,7 @@ import java.util.List;
 public class Client extends BaseEntity {
 
 
+
     @Column(name = "surname", length = 45)
     @Size(min = 2, max = 30)
     private String surname;
@@ -35,7 +36,7 @@ public class Client extends BaseEntity {
     private String numberOfPassport;
 
     @Column(name = "telephone", length = 45)
-    @Pattern(regexp = "^(\\+375|80)(29|25|44|33)(\\d{3})(\\d{2})(\\d{2})$",message = " +375297563344 или 80442897638")
+    @Pattern(regexp = "^(\\+375|80)(29|25|44|33)(\\d{3})(\\d{2})(\\d{2})$", message = " +375297563344 или 80442897638")
     private String telephone;
 
     @Column(name = "address", length = 60)
@@ -48,11 +49,16 @@ public class Client extends BaseEntity {
     private Role role;
 
     @Column(unique = true)
-    @Pattern(regexp = "^[a-zA-Z](?!.*\\\\.\\\\.)[a-zA-Z.\\\\d]{5,19}$")
-    //Длина: 6 - 20 символов
-    // Нужно начинать с буквы a-zA-Z
-    // Может содержать a-zA-Z0-9 и.
-    // Не может быть двух последовательных точек
+    @Pattern(regexp = "^[a-zA-Z](?!.*\\\\.\\\\.)[a-zA-Z.\\\\d]{5,19}$",
+            message = "Длина: 6 - 20 символов\n" +
+                    "\n" +
+                    "Нужно начинать с буквы a-zA-Z\n" +
+                    "\n" +
+                    "Может содержать a-zA-Z0-9 и.\n" +
+                    "\n" +
+                    "Не может быть двух последовательных точек"
+    )
+
     private String username;
 
     @Column(name = "password")

@@ -1,9 +1,9 @@
 package com.example.rental_car.web.controller;
 
-import com.example.rental_car.dao.models.Client;
-import com.example.rental_car.dao.models.Order;
-import com.example.rental_car.dao.models.Role;
-import com.example.rental_car.dao.models.dto.OrderDto;
+import com.example.rental_car.models.Client;
+import com.example.rental_car.models.Order;
+import com.example.rental_car.models.Role;
+import com.example.rental_car.models.dto.OrderDto;
 import com.example.rental_car.service.ClientService;
 import com.example.rental_car.service.OrderService;
 import org.springframework.stereotype.Controller;

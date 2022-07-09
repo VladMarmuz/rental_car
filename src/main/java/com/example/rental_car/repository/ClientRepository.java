@@ -1,6 +1,6 @@
-package com.example.rental_car.dao.repository;
+package com.example.rental_car.repository;
 
-import com.example.rental_car.dao.models.Client;
+import com.example.rental_car.models.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

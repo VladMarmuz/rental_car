@@ -1,8 +1,7 @@
 package com.example.rental_car.service;
 
-import com.example.rental_car.dao.models.Client;
-import com.example.rental_car.dao.models.Order;
-import com.example.rental_car.dao.models.dto.OrderDto;
+import com.example.rental_car.models.Order;
+import com.example.rental_car.models.dto.OrderDto;
 
 import java.util.List;
 

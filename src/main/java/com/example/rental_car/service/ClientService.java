@@ -1,6 +1,6 @@
 package com.example.rental_car.service;
 
-import com.example.rental_car.dao.models.Client;
+import com.example.rental_car.models.Client;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;

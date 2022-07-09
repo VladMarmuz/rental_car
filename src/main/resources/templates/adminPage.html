@@ -102,9 +102,9 @@
                 <td th:text="${order.dateOfIssue}"></td>
                 <td th:text="${order.returnDate}"></td>
                 <td th:text="${order.requestState}"></td>
-                <td th:text="${order.idCar.id}"></td>
-                <td th:text="${order.idClient.id}"></td>
-                <td><a class="btn btn-secondary" th:href="@{orderEdit/{id}(id=${order.id})}">изменить</a>
+                <td th:text="${order.idCar}"></td>
+                <td th:text="${order.idClient}"></td>
+                <td><a class="btn btn-secondary" th:href="@{orderEdit/{id}(id=${order.id})}">редактировать</a>
                     <p></p>
                 <a class="btn btn-danger" th:href="@{admin/orderDelete/{id}(id=${order.id})}">удалить</a></td>
 

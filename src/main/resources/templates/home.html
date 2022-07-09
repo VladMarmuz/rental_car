@@ -50,7 +50,7 @@
                     <li><a href="/home" class="nav-link px-4 text-white"><h5>Главная</h5></a></li>
                     <li><a href="/cars" class="nav-link px-4 text-white"><h5>Каталог автомобилей</h5></a></li>
                     <li><a href="#aboutUs" class="nav-link px-4 text-white"><h5>О нас </h5></a></li>
-                    <li sec:authorize="isAuthenticated()">
+                    <li sec:authorize="hasAnyAuthority('ROLE_USER')">
                         <a href="/myOrder" class="nav-link px-4 text-white"><h5>Мои заказы</h5></a></li>
                 </ul>
                 <ul>

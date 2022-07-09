@@ -1,13 +1,10 @@
 package com.example.rental_car.web.controller;
 
-import com.example.rental_car.dao.models.Car;
-import com.example.rental_car.dao.models.Client;
-import com.example.rental_car.dao.models.Order;
-import com.example.rental_car.dao.models.dto.OrderDto;
-import com.example.rental_car.dao.repository.CarRepository;
-import com.example.rental_car.service.CarService;
+
+import com.example.rental_car.models.Client;
+import com.example.rental_car.models.Order;
+import com.example.rental_car.models.dto.OrderDto;
 import com.example.rental_car.service.ClientService;
-import com.example.rental_car.service.Order1Service;
 import com.example.rental_car.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +15,10 @@ public class AdminController {
 
     private final ClientService clientService;
     private final OrderService orderService;
-    private final Order1Service order1Service;
 
-    public AdminController(ClientService clientService, OrderService orderService, Order1Service order1Service) {
+    public AdminController(ClientService clientService, OrderService orderService) {
         this.clientService = clientService;
         this.orderService = orderService;
-        this.order1Service = order1Service;
 
     }
 
@@ -54,21 +49,15 @@ public class AdminController {
     }
 
     @GetMapping("/orderEdit/{id}")
-    public String editOrder(/*@PathVariable("idCar") Car car,
-                            @PathVariable("idClient") Client client,*/
-                            @PathVariable("id") Integer id, Model model){
+    public String editOrder( @PathVariable("id") Integer id, Model model){
         Order order= orderService.findOrderById(id);
-        /*order.setIdCar(car);
-        order.setIdClient(client);
-        model.addAttribute("car",car);
-        model.addAttribute("client",client);*/
         model.addAttribute("order",order);
         return "orderEdit";
     }
 
     @PostMapping("/orderEdit")
-    public String updateOrder(Order order){
-        order1Service.save(order);
+    public String updateOrder(OrderDto order){
+        orderService.save(order);
         return "redirect:/admin";
     }
 

@@ -1,10 +1,10 @@
 package com.example.rental_car.service;
 
-import com.example.rental_car.dao.models.Client;
-import com.example.rental_car.dao.models.Order;
-import com.example.rental_car.dao.models.dto.OrderDto;
-import com.example.rental_car.dao.repository.CarRepository;
-import com.example.rental_car.dao.repository.OrderRepository;
+import com.example.rental_car.models.Client;
+import com.example.rental_car.models.Order;
+import com.example.rental_car.models.dto.OrderDto;
+import com.example.rental_car.repository.CarRepository;
+import com.example.rental_car.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

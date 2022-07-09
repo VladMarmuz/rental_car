@@ -1,4 +1,4 @@
-package com.example.rental_car.dao.models;
+package com.example.rental_car.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
