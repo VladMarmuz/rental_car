@@ -1,7 +1,7 @@
 # rental_car
 It's my first project,which I made by myself! 
 
-I used the following tools: Java(1.8), Spring Framework,Maven, Thymeleaf, Database MySQL.
+I used the following tools: ___Java(1.8), Spring Framework,Maven, Thymeleaf, Database MySQL.___
 
 ## About project
 It's just a car rental app.<br/>
