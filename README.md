@@ -1,5 +1,7 @@
 # rental_car
-It's my first project,which I made by myself!
+It's my first project,which I made by myself! 
+
+I used the following tools: Java(1.8), Spring Framework(Spring Core,Security,Hibernate,Lombok),Maven, Thymeleaf, Database MySQL.
 
 ## About project
 It's just a car rental app.<br/>
