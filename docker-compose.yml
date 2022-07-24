@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  app:
+    build: ./
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+    links:
+      - mysql:app_db
+  mysql:
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: car_rental
+      MYSQL_USER: docker
+      MYSQL_ROOT_PASSWORD: 123456789j
+      MYSQL_PASSWORD: 123456789d
+
+
+
+
